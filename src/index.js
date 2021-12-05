@@ -4,27 +4,26 @@ window.onload = function() {
   canvas.width = innerWidth *.99;
   c = canvas.getContext('2d');
 
-  canvas.addEventListener('click', (e) => {
+  canvas.addEventListener('mouseup', (e) => {
 
     activeColor = document.querySelector('input[name="colors"]:checked').value;
-    const clickedOn = [];
-    nodes.forEach(node => {
-      clickedOn.push(node.verifyClick(e.clientX,
-        e.clientY - (innerHeight * .15)));
-    });
 
-    if(clickedOn.includes(true)){
+    const clickObject = whatWasClicked(e);
+
+    if(clickObject.node){
 
       redraw();
-      const nodeIndex = clickedOn.findIndex((element) => {return element});
-      if(activeNodeIndex !== nodeIndex) {
+      if(activeNodeIndex !== clickObject.nodeIndex) {
         if(activeNodeIndex !== null){
-          const edge = new Edge(nodes[activeNodeIndex], nodes[nodeIndex]);
+          const edge = new Edge(
+            nodes[activeNodeIndex],
+            nodes[clickObject.nodeIndex
+          ]);
           edges.push(edge);
           edge.renderEdge(c);
         }
-        nodes[nodeIndex].renderActive(c);
-        activeNodeIndex = nodeIndex;
+        nodes[clickObject.nodeIndex].renderActive(c);
+        activeNodeIndex = clickObject.nodeIndex;
       }else {
         activeNodeIndex = null;
       }
@@ -66,4 +65,27 @@ function redraw() {
     node.renderNode(c);
   });
 
+}
+
+function whatWasClicked(e) {
+
+  let returnObject = {
+    node: false,
+    edge: false,
+    nodeIndex: -1,
+    edgeIndex: -1
+  }
+
+  const clickedOn = [];
+  nodes.forEach(node => {
+    clickedOn.push(node.verifyClick(e.clientX,
+      e.clientY - (innerHeight * .15)));
+  });
+
+  if(clickedOn.includes(true)){
+    returnObject.node = true;
+    returnObject.nodeIndex = clickedOn.findIndex((element) => {return element});
+  }
+
+  return returnObject;
 }
