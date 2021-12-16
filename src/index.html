@@ -11,7 +11,7 @@
   <body>
     <div id="menu">
       <div id="colorBox">
-        <p>Colors</p>
+        <p class="heading">Colors</p>
         <form id="colorGrid">
           <input type="radio" id="color1" name="colors" value="#0ca647" checked>
           <label for="color1"></label>
@@ -26,6 +26,16 @@
           <input type="radio" id="color6" name="colors" value="#8d28a1">
           <label for="color6"></label>
         </form>
+      </div>
+      <div id="count">
+        <p class="heading">Graph Stats</p>
+        <p id="nodeCount" class="info">Nodes: 0</p>
+        <p id="edgeCount" class="info">Edges: 0</p>
+      </div>
+      <div id="options">
+        <p class="heading">Options</p>
+        <p class="info">Number Nodes:<button id="numberNodes">False</button></p>
+        <p class="info">Show Degree:<button id="showDegree">False</button></p>
       </div>
     </div>
     <canvas id="canvas"></canvas>

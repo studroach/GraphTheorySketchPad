@@ -13,20 +13,29 @@ body, html {
   width: 100%;
   background-color: #12151f;
   display: grid;
-  grid-template-columns: 20%;
+  grid-template-columns: 12% 12% 12%;
+  grid-column-gap: 5%;
 }
 
 #colorBox {
   margin-left: 5%;
-  width: 128px;
 }
 
 p {
+  user-select: none;
+}
+
+p.heading {
   color: #ebebeb;
   margin-top: 15px;
   margin-bottom: 12px;
   padding-bottom: 3px;
   border-bottom: 2px solid #e8761a;
+}
+
+p.info {
+  color: #ffffff;
+  padding-bottom: 5px;
 }
 
 #colorGrid {
@@ -52,6 +61,10 @@ input[type="radio"]:checked + label {
   border: 2px solid #ffffff;
 }
 
+input[type="radio"]:hover + label {
+  cursor: pointer;
+}
+
 #color1 + label {background-color: #0ca647}
 #color2 + label {background-color: #34dbe0}
 #color3 + label {background-color: #2e18d6}
@@ -59,7 +72,47 @@ input[type="radio"]:checked + label {
 #color5 + label {background-color: #991a36}
 #color6 + label {background-color: #8d28a1}
 
+#count {
 
+}
+
+#options {
+
+}
+
+#numberNodes {
+  margin-left: 10px;
+  width: 70px;
+  color: #ffffff;
+  background-color: #212329;
+  border: 2px solid #e8761a;
+  border-radius: 10px;
+  user-select: none;
+}
+
+#numberNodes:hover {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background-color: #e8761a;
+  cursor: pointer;
+}
+
+#showDegree {
+  margin-left: 21px;
+  width: 70px;
+  color: #ffffff;
+  background-color: #212329;
+  border: 2px solid #e8761a;
+  border-radius: 10px;
+  user-select: none;
+}
+
+#showDegree:hover {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background-color: #e8761a;
+  cursor: pointer;
+}
 
 #canvas {
   background-color: #212329;
