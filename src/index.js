@@ -1,6 +1,6 @@
 window.onload = function() {
   canvas = document.querySelector('#canvas');
-  canvas.height = innerHeight * .84;
+  canvas.height = innerHeight - 140;
   canvas.width = innerWidth;
   c = canvas.getContext('2d');
   c.font = '20px serif';
@@ -15,7 +15,7 @@ window.onload = function() {
 }
 
 window.onresize = function() {
-  canvas.height = innerHeight * .84;
+  canvas.height = innerHeight - 140;
   canvas.width = innerWidth;
   redraw();
 }
@@ -69,7 +69,7 @@ function whatWasClicked(e) {
   nodes.forEach(node => {
     if(node !== null) {
       clickedOn.push(node.verifyClick(e.clientX,
-        e.clientY - (innerHeight * .15)));
+        e.clientY - 140));
     }else {
       clickedOn.push(false);
     }
@@ -127,7 +127,7 @@ function mouseUpEvent(e) {
     console.log("new node");
     const node = new Node(
       e.clientX,
-      e.clientY - (innerHeight * .15),
+      e.clientY - 140,
       activeColor
     );
     nodes.push(node);
@@ -140,7 +140,7 @@ function mouseUpEvent(e) {
 function mouseMoveEvent(e) {
   if(moveNode === true) {
     nodes[moveNodeIndex].x = e.clientX;
-    nodes[moveNodeIndex].y = e.clientY - (innerHeight * .15);
+    nodes[moveNodeIndex].y = e.clientY - 140;
     redraw();
     moved = true;
     activeNodeIndex = null;
